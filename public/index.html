@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Crime Report</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <h1>Create Crime Report</h1>
+    
+    <form id="reportForm">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" id="location" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" rows="4" required></textarea>
+        </div>
+        
+        <button type="submit">Submit Report</button>
+    </form>
+
+    <div id="reportView">
+        <h2>Submitted Report</h2>
+        <div id="reportContent"></div>
+    </div>
+
+    <script>
+        document.getElementById('reportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const title = document.getElementById('title').value;
+            const location = document.getElementById('location').value;
+            const description = document.getElementById('description').value;
+            
+            // Create report HTML
+            const reportHTML = `
+                <p><strong>Title:</strong> ${title}</p>
+                <p><strong>Location:</strong> ${location}</p>
+                <p><strong>Description:</strong> ${description}</p>
+                <p><strong>Date Submitted:</strong> ${new Date().toLocaleString()}</p>
+            `;
+            
+            // Display the report
+            document.getElementById('reportContent').innerHTML = reportHTML;
+            document.getElementById('reportView').style.display = 'block';
+            
+            // Optional: Clear the form
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
