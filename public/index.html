@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create Crime Report</title>
+    <title>Neighborhood Watch</title>
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-    <h1>Create Crime Report</h1>
+    <h1>Neighborhood Watch</h1>
+    <h2>Submit a Report</h2>
     
     <form id="reportForm">
         <div class="form-group">
@@ -35,12 +36,10 @@
         document.getElementById('reportForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
             const title = document.getElementById('title').value;
             const location = document.getElementById('location').value;
             const description = document.getElementById('description').value;
             
-            // Create report HTML
             const reportHTML = `
                 <p><strong>Title:</strong> ${title}</p>
                 <p><strong>Location:</strong> ${location}</p>
@@ -48,11 +47,9 @@
                 <p><strong>Date Submitted:</strong> ${new Date().toLocaleString()}</p>
             `;
             
-            // Display the report
             document.getElementById('reportContent').innerHTML = reportHTML;
             document.getElementById('reportView').style.display = 'block';
             
-            // Optional: Clear the form
             e.target.reset();
         });
     </script>
