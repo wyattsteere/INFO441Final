@@ -1,9 +1,28 @@
-async function getReport() {
-  const responseJSON = await fetchJSON(`reports`);
-  if (!responseJSON) {
-    console.log("empty")
-  } else {
-    console.log(responseJSON);
+window.onload = getReports;
+
+async function getReports() {
+  try {
+      const response = await fetch('/reports');
+      const reports = await response.json();
+
+      const reportsContainer = document.getElementById('reportsContainer');
+
+      if (!reports || reports.length === 0) {
+          reportsContainer.innerHTML = '<p>No reports found.</p>';
+          return;
+      }
+
+      reportsContainer.innerHTML = reports.map(report => `
+          <div class="report">
+              <h3>${escapeHTML(report.title)}</h3>
+              <p><strong>Location:</strong> ${escapeHTML(report.location)}</p>
+              <p><strong>Description:</strong> ${escapeHTML(report.description)}</p>
+          </div>
+          <hr>
+      `).join('');
+  } catch (error) {
+      console.error('Error loading reports:', error);
+      document.getElementById('reportsContainer').innerHTML = '<p>Error loading reports. Please try again later.</p>';
   }
 }
 
@@ -12,11 +31,19 @@ async function postReport() {
   const location = document.getElementById('location').value;
   const description = document.getElementById('description').value;
 
-  const responseJson = await fetchJSON(`reports`, {
-    method: "POST",
-    body: {title: title, location: location, description: description}
+  const response = await fetch('/reports', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title, location, description }),
   });
-  console.log("inside of postreport")
 
-  console.log(title, location, description);
+  const result = await response.json();
+
+  if (result.status === 'success') {
+      document.getElementById('feedbackMessage').style.display = 'block';
+      document.getElementById('reportForm').reset();
+      getReports();
+  }
 }
