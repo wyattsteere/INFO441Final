@@ -3,28 +3,29 @@
 <head>
     <title>Neighborhood Watch</title>
     <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="javascripts/reports.js"></script>
 </head>
 <body>
     <h1>Neighborhood Watch</h1>
     <h2>Submit a Report</h2>
-    
+
     <form id="reportForm">
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" id="title" required>
         </div>
-        
+
         <div class="form-group">
             <label for="location">Location:</label>
             <input type="text" id="location" required>
         </div>
-        
+
         <div class="form-group">
             <label for="description">Description:</label>
             <textarea id="description" rows="4" required></textarea>
         </div>
-        
-        <button type="submit">Submit Report</button>
+
+        <button onclick="postReport()">Submit Report</button>
     </form>
 
     <div id="reportView">
@@ -32,26 +33,26 @@
         <div id="reportContent"></div>
     </div>
 
-    <script>
+    <!-- <script>
         document.getElementById('reportForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const title = document.getElementById('title').value;
             const location = document.getElementById('location').value;
             const description = document.getElementById('description').value;
-            
+
             const reportHTML = `
                 <p><strong>Title:</strong> ${title}</p>
                 <p><strong>Location:</strong> ${location}</p>
                 <p><strong>Description:</strong> ${description}</p>
                 <p><strong>Date Submitted:</strong> ${new Date().toLocaleString()}</p>
             `;
-            
+
             document.getElementById('reportContent').innerHTML = reportHTML;
             document.getElementById('reportView').style.display = 'block';
-            
+
             e.target.reset();
         });
-    </script>
+    </script> -->
 </body>
 </html>
