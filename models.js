@@ -9,6 +9,7 @@ await mongoose.connect('mongodb+srv://info441mongo:info441mongo@cluster0.5rbe0.m
 console.log("successfully connected to mongodb!")
 
 const reportSchema = new mongoose.Schema({
+    username: String,
     title: String,
     location: String,
     description: String,
@@ -23,6 +24,23 @@ const watchSchema = new mongoose.Schema({
     time_end: String
 })
 
+const watchSchema = new mongoose.Schema({
+    username: String,
+    description: String,
+    location: String,
+    watch_date: Date,
+    time_start: String,
+    time_end: String
+})
+
+const userSchema = new mongoose.Schema({
+    username: String,
+    biography: String,
+    accountCreation: Date,
+    crimesReported: Number
+})
+
+models.Users = mongoose.model('Users', userSchema)
 models.Reports = mongoose.model('Reports', reportSchema)
 models.Watchs = mongoose.model('Watchs', watchSchema)
 

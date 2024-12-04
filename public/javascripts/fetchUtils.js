@@ -1,4 +1,4 @@
-async function fetchJSON(route, options){
+ async function fetchJSON(route, options){
     let response
     try{
         response = await fetch(route, {

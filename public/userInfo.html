@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neighborhood Watch</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="javascripts/api_version.js"></script>
+    <script src="javascripts/utils.js"></script>
+    <script src="javascripts/reports.js"></script>
+    <script src="javascripts/identity.js"></script>
+    <script src="javascripts/index.js"></script>
+    <script src="javascripts/fetchUtils.js"></script>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+</head>
+<body onload="init()">
+    <nav class="navbar navbar-light bg-light">
+        <div id="errorInfo" class="alert alert-danger fade show" role="alert" style="opacity:0"></div>
+        <div id="identity_div">loading...</div>
+    </nav>
+    <h1>Neighborhood Watch</h1>
+
+    <div id="reports_box">
+        <h2>Reports</h2>
+        <div id="reportsContainer">
+            Loading reports...
+        </div>
+    </div>
+</body>
+</html>
