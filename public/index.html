@@ -9,9 +9,10 @@
     <script src="javascripts/identity.js"></script>
     <script src="javascripts/index.js"></script>
     <script src="javascripts/fetchUtils.js"></script>
+    <script src="javascripts/watchs.js"></script>
     <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
-<body onload="init()">
+<body onload="init();">
     <nav class="navbar navbar-light bg-light">
         <div id="errorInfo" class="alert alert-danger fade show" role="alert" style="opacity:0"></div>
         <div id="identity_div">loading...</div>
@@ -46,6 +47,47 @@
         <h2>Reports</h2>
         <div id="reportsContainer">
             Loading reports...
+        </div>
+    </div>
+
+    <h2>Sign Up for a Watch</h2>
+    <form id="watchForm">
+        <div class="form-group">
+            <label for="watchDescription">Description:</label>
+            <textarea id="watchDescription" rows="2" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="watchLocation">Location:</label>
+            <input type="text" id="watchLocation" required>
+        </div>
+
+        <div class="form-group">
+            <label for="watchDate">Date:</label>
+            <input type="date" id="watchDate" required>
+        </div>
+
+        <div class="form-group">
+            <label for="watchTimeStart">Start Time:</label>
+            <input type="time" id="watchTimeStart" required>
+        </div>
+
+        <div class="form-group">
+            <label for="watchTimeEnd">End Time:</label>
+            <input type="time" id="watchTimeEnd" required>
+        </div>
+
+        <button type="button" onclick="postWatch()">Sign Up</button>
+    </form>
+
+    <div id="watchFeedbackMessage" style="display:none;">
+        Watch signup successful!
+    </div>
+
+    <div id="watch_box">
+        <h2>Your Neighborhood Watch Times</h2>
+        <div id="watchContainer">
+            Loading watch times...
         </div>
     </div>
 </body>

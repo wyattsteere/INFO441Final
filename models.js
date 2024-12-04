@@ -14,7 +14,17 @@ const reportSchema = new mongoose.Schema({
     description: String,
 })
 
+const watchSchema = new mongoose.Schema({
+    username: String,
+    description: String,
+    location: String,
+    watch_date: Date,
+    time_start: String,
+    time_end: String
+})
+
 models.Reports = mongoose.model('Reports', reportSchema)
+models.Watchs = mongoose.model('Watchs', watchSchema)
 
 console.log("mongoose models created")
 

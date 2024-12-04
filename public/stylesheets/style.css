@@ -40,7 +40,6 @@ textarea {
   font-size: 14px;
 }
 
-/* Button styling */
 button {
   padding: 10px 20px;
   background-color: #4CAF50;
@@ -94,4 +93,51 @@ hr {
   border: none;
   border-top: 1px solid #ccc;
   margin: 20px 0;
+}
+
+.feedback {
+  text-align: center;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.feedback.success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.feedback.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.feedback.info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border: 1px solid #bee5eb;
+}
+
+.watch-time {
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.watch-time h3 {
+  margin-top: 0;
+  color: #4CAF50;
+}
+
+.watch-time p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
 }
