@@ -2,7 +2,7 @@ import express from 'express';
 var router = express.Router();
 
 /* GET reports listing. */
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
   try {
     const reportsAll = await req.models.Reports.find();
     const reportData = await Promise.all(
@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
 });
 
 /* POST reports listing. */
-router.post('/', async (req, res, next) => {
+router.post('/', async (req, res) => {
   console.log("Request Body:", req.body);
   try {
     const { title, location, description } = req.body;
