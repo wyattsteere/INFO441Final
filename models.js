@@ -24,15 +24,6 @@ const watchSchema = new mongoose.Schema({
     time_end: String
 })
 
-const watchSchema = new mongoose.Schema({
-    username: String,
-    description: String,
-    location: String,
-    watch_date: Date,
-    time_start: String,
-    time_end: String
-})
-
 const userSchema = new mongoose.Schema({
     username: String,
     biography: String,
@@ -40,9 +31,9 @@ const userSchema = new mongoose.Schema({
     crimesReported: Number
 })
 
+models.Watchs = mongoose.model('Watchs', watchSchema)
 models.Users = mongoose.model('Users', userSchema)
 models.Reports = mongoose.model('Reports', reportSchema)
-models.Watchs = mongoose.model('Watchs', watchSchema)
 
 console.log("mongoose models created")
 
