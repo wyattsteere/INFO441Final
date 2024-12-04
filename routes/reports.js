@@ -50,6 +50,16 @@ router.post('/', async (req, res) => {
         description: description
       });
       await newReport.save();
+      
+      const username = req.session.account.username;
+      const user = await req.models.Users.findOne({ username: username});
+      if (user) {
+        user.crimesReported = (username.crimesReported || 0) + 1;
+        await user.save();
+      } else {
+        console.log("User not found while updating crimesReported")
+      }
+
       res.json({ status: "success" });
     } else {
       res.json({

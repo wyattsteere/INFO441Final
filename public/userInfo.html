@@ -9,17 +9,24 @@
     <script src="javascripts/identity.js"></script>
     <script src="javascripts/index.js"></script>
     <script src="javascripts/fetchUtils.js"></script>
+    <script src="javascripts/watchs.js"></script>
     <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
-<body onload="init()">
+<body onload="initUserProfile()">
     <nav class="navbar navbar-light bg-light">
         <div id="errorInfo" class="alert alert-danger fade show" role="alert" style="opacity:0"></div>
         <div id="identity_div">loading...</div>
     </nav>
-    <h1>Neighborhood Watch</h1>
+    <h1>
+        <a href="/" style="text-decoration: none; color: inherit;">Neighborhood Watch</a>
+    </h1>
+
+    <div id="user-info">
+        Loading User Info...
+    </div>
 
     <div id="reports_box">
-        <h2>Reports</h2>
+        <h2 id="profile-name-reports">My Reports</h2>
         <div id="reportsContainer">
             Loading reports...
         </div>
