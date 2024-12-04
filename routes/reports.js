@@ -4,11 +4,19 @@ var router = express.Router();
 /* GET reports listing. */
 router.get('/', async (req, res, next) => {
   try {
-    const reportsAll = await req.models.Reports.find();
+    let userNameInput = req.query.username;
+    let reportsAll = null;
+    if (userNameInput != null) {
+      reportsAll = await req.models.Reports.find({ username: userNameInput});
+    } else {
+      reportsAll = await req.models.Reports.find();
+    }
+    
     const reportData = await Promise.all(
       reportsAll.map(async report => {
         return {
             id: report._id,
+            username: report.username,
             title: report.title,
             location: report.location,
             description: report.description
@@ -26,19 +34,29 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   console.log("Request Body:", req.body);
   try {
-    const { title, location, description } = req.body;
-    console.log(title + " " + location + " " + description);
-    if (!title || !location || !description) {
-      console.log("title: " + title)
-      return res.status(400).json({ status: "error", error: "Missing title, location, or description" });
+    if (req.session.isAuthenticated) {
+
+    
+      const { title, location, description } = req.body;
+      console.log(title + " " + location + " " + description);
+      if (!title || !location || !description) {
+        console.log("title: " + title)
+        return res.status(400).json({ status: "error", error: "Missing title, location, or description" });
+      }
+      const newReport = new req.models.Reports({
+        username: req.session.account.username,
+        title: title,
+        location: location,
+        description: description
+      });
+      await newReport.save();
+      res.json({ status: "success" });
+    } else {
+      res.json({
+        status: "error",
+        error: "not logged in"
+      })
     }
-    const newReport = new req.models.Reports({
-      title: title,
-      location: location,
-      description: description
-    });
-    await newReport.save();
-    res.json({ status: "success" });
   } catch (err) {
     console.log(err);
     res.status(500).json({ status: "error", error: err.message });

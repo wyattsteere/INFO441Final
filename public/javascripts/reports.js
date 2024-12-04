@@ -2,8 +2,16 @@ window.onload = getReports;
 
 async function getReports() {
   try {
-      const response = await fetch('/reports');
+      const urlParams = new URLSearchParams(window.location.search);
+      const username = urlParams.get('user');
+      let response = null;
+    if (username != undefined) {
+        response = await fetch(`/reports?username=${username}`);
+    } else {
+        response = await fetch(`/reports`);
+    }
       const reports = await response.json();
+      console.log(reports)
 
       const reportsContainer = document.getElementById('reportsContainer');
 
