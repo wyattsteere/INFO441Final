@@ -1,19 +1,30 @@
 window.onload = getWatchTimes;
 
 async function getWatchTimes() {
-  try {
-      const response = await fetch('/watchs/time');
+  const watchContainer = document.getElementById('watchContainer');
+  const watchForm = document.getElementById('watchForm');
+  const watchHeader = document.getElementById('watchHeader'); // The "Sign Up for a Watch" header
 
-      const watchContainer = document.getElementById('watchContainer');
-      if (response.status === 401) {
-          watchContainer.innerHTML = '<p class="error">Error: You must be logged in to view your watch times.</p>';
-          return;
+  try {
+      const identityResponse = await fetch('/api/v1/users/myIdentity');
+      const identity = await identityResponse.json();
+      const isLoggedIn = identity.status === "loggedin";
+
+      if (isLoggedIn) {
+          console.log("User is logged in:", identity.userInfo.username);
+          watchForm.style.display = 'block';
+          watchHeader.style.display = 'block';
+      } else {
+          console.log("User is not logged in.");
+          watchForm.style.display = 'none';
+          watchHeader.style.display = 'none';
       }
 
+      const response = await fetch('/watchs/time');
       const watchTimes = await response.json();
 
       if (!watchTimes || watchTimes.length === 0) {
-          watchContainer.innerHTML = '<p class="info">No watch times found.</p>';
+          watchContainer.innerHTML = '<p>No watches found.</p>';
           return;
       }
 
@@ -23,15 +34,15 @@ async function getWatchTimes() {
               <p><strong>Location:</strong> ${escapeHTML(watch.location)}</p>
               <p><strong>Date:</strong> ${escapeHTML(new Date(watch.watch_date).toLocaleDateString())}</p>
               <p><strong>Time:</strong> ${escapeHTML(watch.time_start)} - ${escapeHTML(watch.time_end)}</p>
+              ${!isLoggedIn ? `<p><strong>Username:</strong> ${escapeHTML(watch.username)}</p>` : ''}
           </div>
           <hr>
       `).join('');
   } catch (error) {
-      console.error('Error loading watch times:', error);
-      document.getElementById('watchContainer').innerHTML = '<p class="error">Error loading watch times. Please try again later.</p>';
+      console.error("Error loading watch times:", error);
+      watchContainer.innerHTML = '<p class="error">Error loading watch times. Please try again later.</p>';
   }
 }
-
 async function postWatch() {
   const description = document.getElementById('watchDescription').value;
   const location = document.getElementById('watchLocation').value;

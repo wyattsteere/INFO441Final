@@ -10,6 +10,8 @@ import usersRouter from './routes/users.js';
 import reportsRouter from './routes/reports.js';
 import watchRouter from './routes/watchs.js';
 import apiv1Router from './routes/api/v1/apiv1.js';
+import myIdentityRouter from './routes/api/v1/users/myidentity.js';
+
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -83,5 +85,6 @@ app.use('/reports', reportsRouter);
 app.use('/watchs', watchRouter);
 
 app.use('/api/v1', apiv1Router);
+app.use('/api/v1/users', myIdentityRouter);
 
 export default app;
