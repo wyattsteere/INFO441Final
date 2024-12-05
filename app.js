@@ -9,7 +9,8 @@ import models from './models.js'
 import usersRouter from './routes/users.js';
 import reportsRouter from './routes/reports.js';
 import watchRouter from './routes/watchs.js';
-import mapRouter from './routes/mapRoutes.js'; 
+import mapRouter from './routes/mapRoutes.js';
+import markerRouter from './routes/markers.js';
 import apiv1Router from './routes/api/v1/apiv1.js';
 import myIdentityRouter from './routes/api/v1/users/myidentity.js';
 
@@ -84,7 +85,9 @@ app.use((req, res, next) => {
 app.use('/users', usersRouter);
 app.use('/reports', reportsRouter);
 app.use('/watchs', watchRouter);
-app.use('/map', mapRouter); 
+app.use('/map', mapRouter);
+app.use('/marker', markerRouter);
+
 
 app.use('/api/v1', apiv1Router);
 app.use('/api/v1/users', myIdentityRouter);

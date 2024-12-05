@@ -31,9 +31,17 @@ const userSchema = new mongoose.Schema({
     crimesReported: Number
 })
 
+const markerSchema = new mongoose.Schema({
+    title: String,
+    description: String,
+    latitude: Number,
+    longitude: Number
+})
+
 models.Watchs = mongoose.model('Watchs', watchSchema)
 models.Users = mongoose.model('Users', userSchema)
 models.Reports = mongoose.model('Reports', reportSchema)
+models.Markers = mongoose.model('Markers', markerSchema)
 
 console.log("mongoose models created")
 
