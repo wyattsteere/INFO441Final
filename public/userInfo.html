@@ -10,6 +10,7 @@
     <script src="javascripts/index.js"></script>
     <script src="javascripts/fetchUtils.js"></script>
     <script src="javascripts/watchs.js"></script>
+    <script src="javascripts/userProfile.js"></script>
     <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
 <body onload="initUserProfile()">
@@ -23,6 +24,16 @@
 
     <div id="user-info">
         Loading User Info...
+    </div>
+
+    <button id="updateBioButton" onclick="showBioForm()">Update Bio</button>
+
+    <div id="edit-biography" style="display: none;">
+        <h2>Update Biography</h2>
+        <textarea id="biographyInput" rows="4" placeholder="Enter your biography..."></textarea>
+        <button onclick="updateBiography()">Save Biography</button>
+        <button onclick="hideBioForm()">Cancel</button>
+        <div id="biographyStatus"></div>
     </div>
 
     <div id="reports_box">

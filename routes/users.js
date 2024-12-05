@@ -28,4 +28,33 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.put('/', async (req, res) => {
+  try {
+    const username = req.session.account.username;
+    if (!username) {
+      return res.status(401).json({ status: "error", error: "Not logged in"});
+    }
+
+    const { biography } = req.body;
+    if (!biography) {
+      return res.status(400).json({ status: "error", error: "Biography is required"});
+    }
+
+    const updatedUser = await req.models.Users.findOneAndUpdate(
+      { username: username },
+      { biography: biography },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ status: "error", error: "User not found" });
+    }
+
+    res.json({ status: "success", user: updatedUser});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: "error", error: error.message})
+  }
+})
+
 export default router;
