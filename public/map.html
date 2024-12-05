@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neighborhood Watch Map</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <script src="javascripts/map.js"></script>
+
     <style>
-        #map { 
-            height: 500px; 
-            width: 100%; 
+        #map {
+            height: 500px;
+            width: 100%;
         }
         .map-container {
             max-width: 1200px;
@@ -20,11 +28,13 @@
 <body>
     <div class="map-container">
         <h1>Neighborhood Watch Map</h1>
+        <button id="marker_button">Toggle Marker Placement</button>
+        <div id="error_message"></div>
         <div id="map"></div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
+    <!-- <script>
         const map = L.map('map').setView([47.66154255,-122.30985726], 16); //UDistrict Coords
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -32,7 +42,7 @@
         }).addTo(map); //map is lowkey old but I already found out how to do this one
 
 
-        
-    </script>
+
+    </script> -->
 </body>
 </html>
