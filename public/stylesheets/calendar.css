@@ -1,0 +1,41 @@
+#calendarContainer {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#calendarContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#calendarContainer th,
+#calendarContainer td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#calendarContainer th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#calendarContainer td {
+    height: 100px;
+    vertical-align: top;
+}
+
+#calendarContainer button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+#calendarContainer button:hover {
+    background-color: rgba(255,255,255,0.1);
+}
