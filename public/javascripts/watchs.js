@@ -1,5 +1,10 @@
 window.onload = getWatchTimes;
 
+window.onload = async function() {
+    await getWatchTimes();
+    await loadCalendar();
+};
+
 async function getWatchTimes() {
   const watchContainer = document.getElementById('watchContainer');
   const watchForm = document.getElementById('watchForm');

@@ -3,6 +3,7 @@
 <head>
     <title>Neighborhood Watch</title>
     <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/calendar.css">
     <script src="javascripts/api_version.js"></script>
     <script src="javascripts/utils.js"></script>
     <script src="javascripts/reports.js"></script>
@@ -11,6 +12,7 @@
     <script src="javascripts/fetchUtils.js"></script>
     <script src="javascripts/watchs.js"></script>
     <!-- <script src="javascripts/map.js"></script> -->
+    <script src="/javascripts/calendar.js"></script>
     <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
 <body onload="init();">
@@ -97,5 +99,13 @@
             Loading watch times...
         </div>
     </div>
+
+    <div id="calendar_box">
+        <h2>Watch Schedule Calendar</h2>
+        <div id="calendarContainer">
+            Loading calendar...
+        </div>
+    </div>
+
 </body>
 </html>
