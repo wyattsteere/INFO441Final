@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
   });
 
-  // load ALL markerss
   async function loadMarkers() {
       try {
           console.log("Fetching markers from the backend...");

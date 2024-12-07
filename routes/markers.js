@@ -2,7 +2,6 @@ import express from 'express';
 
 const router = express.Router();
 
-// GET /marker - Retrieve all markers
 router.get('/', async (req, res) => {
     try {
         const markers = await req.models.Markers.find({});
@@ -13,7 +12,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// POST /marker - Add a new marker
 router.post('/', async (req, res) => {
   try {
     if (req.session.isAuthenticated) {

@@ -20,9 +20,9 @@ import { dirname } from 'path';
 
 const authConfig = {
     auth: {
-   	clientId: "0f939492-f37d-41b7-8ca5-2bd85ad61055",
+   	clientId: "8a92eab0-46d5-4fc6-b4a5-1380c0b83582",
     	authority: "https://login.microsoftonline.com/f6b6dd5b-f02f-441a-99a0-162ac5060bd2",
-    	clientSecret: "OuL8Q~2Dm6rxbUGwk8eovyV8rbHwGKInpMT6cchg",
+    	clientSecret: "CL08Q~qaZs7pBPJEfyXON18EHG6XnqkkIP1iTbGI",
     	redirectUri: "/redirect"
     },
 	system: {

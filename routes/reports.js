@@ -1,7 +1,6 @@
 import express from 'express';
 var router = express.Router();
 
-/* GET reports listing. */
 router.get('/', async (req, res) => {
   try {
     let userNameInput = req.query.username;
@@ -30,7 +29,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-/* POST reports listing. */
 router.post('/', async (req, res) => {
   console.log("Request Body:", req.body);
   try {

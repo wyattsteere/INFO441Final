@@ -1,7 +1,6 @@
 import express from 'express';
 var router = express.Router();
 
-/* GET users listing. */
 router.get('/', async (req, res) => {
   try {
     const username = req.query.user;
@@ -43,7 +42,7 @@ router.put('/', async (req, res) => {
     const updatedUser = await req.models.Users.findOneAndUpdate(
       { username: username },
       { biography: biography },
-      { new: true } // Return the updated document
+      { new: true } 
     );
 
     if (!updatedUser) {

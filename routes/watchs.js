@@ -5,7 +5,6 @@ router.get('/time', async (req, res) => {
   console.log("Running the GET WATCH method");
   try {
       if (req.session.isAuthenticated) {
-          // User is logged in, return only their watches
           const username = req.session.account.username;
           console.log("Fetching watch times for:", username);
 
@@ -20,7 +19,6 @@ router.get('/time', async (req, res) => {
 
           res.json(watchTimes);
       } else {
-          // User is not logged in, return all watches with usernames
           console.log("Fetching all watches for unauthenticated user.");
 
           const allWatches = await req.models.Watchs.find();
@@ -41,7 +39,6 @@ router.get('/time', async (req, res) => {
   }
 });
 
-// POST /watch/signup - Allows users to indicate a time they are interested in joining a neighborhood watch
 router.post('/signup', async (req, res) => {
     try {
         if (!req.session.isAuthenticated) {
